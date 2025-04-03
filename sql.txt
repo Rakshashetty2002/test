@@ -1,0 +1,48 @@
+create table BookDetailsOne(BookAuthor char(45),BookName char(50),BookType char(20),BookPages int(4),BookPrice double(6,2),BookID int(4));
+desc BookDetailsOne;
+insert into BookDetailsOne values("Rbond","The blue umbrella","Story",56,23.50,1234);
+insert into BookDetailsOne values(“ABCD”,"Core Java Fundamental","Technical",56,145.90,1878);
+insert into BookDetailsOne values("Rbond","Time stops at shamli","Story",56,18.90,1786);
+insert into BookDetailsOne values("ypk","C Fundamental","Technical",56,555.55,1216);
+insert into BookDetailsOne values("Rbond","Java Fundamental","Technical",56,35.90,2700);
+insert into BookDetailsOne values("Pallhavi Joshi","No time","Fiction",56,109.90,4321);
+insert into BookDetailsOne values("ypk","C++ Fundamental","Technical",56,276.00,1111);
+insert into BookDetailsOne values("Pallhavi Joshi","Out of box","Fiction",56,78.21,3434);
+insert into BookDetailsOne values("ypk","C Fundamental","Non Fiction",56,55.89,1412);
+commit;
+select * from BookDetailsOne; 
+select BookAuthor,BookType from BookDetailsOne;
+select * from BookDetailsOne where BookPrice < 109.90;
+select count(*) from bookdetailsone where bookauthor = "ypk";
+truncate table bookdetailsone;
+//book price 35 to 100
+select * from bookdetailsone where bookprice between 35 and 100;
+select  * from bookdetailsone where bookprice > 35 and bookprice < 100;
+//ignore rows that has bookid 2700  4321 using not in
+select * from bookdetailsone where bookid not in (2700,4321);
+select * from bookdetailsone where bookid in (2700,4321);
+//concat ||
+select bookname, concat(bookprice,bookid,bookauthor) from bookdetailsone;
+//bookprice****bookid****authorname
+select concat(bookprice,"*****", bookid,"******",authorname) from bookdetailsone;
+//limit
+select * from bookdetailsone limit 6;
+// in and not in
+//increase price by 10% for bookprice where author is rbond and ypk
+select * from bookdetailsone where bookprice = 
+//for sum of all boookprice
+select sum(bookprice)  from bookdetailsone;
+select avg(bookprice)  from bookdetailsone;
+//alias bookprice as bp
+select avg(bookprice) as bp from bookdetailsone;
+//add book price where bookname is given specifically
+select sum(bookprice) from bookdetailsone where not in(23.50,18.90);
+// order by
+select * from bookdeatailsone order by bookprice;
+select * from bookdeatailsone order by bookprice desc;
+//order by with where clause
+select * from bookdetailsone where authorname in ("ypk") order by bookprice;  //check this
+//count the bookdetailsone after removing no time and c fundamentals from bookname
+//asec desc;
+
+https://github.com/c11472/250-Testing-GitAllCommands.git
